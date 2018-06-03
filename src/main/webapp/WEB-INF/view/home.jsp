@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html>
-<%@include file="templates/head.jsp" %>
-<body>
+<%@include file="templates/header.jsp" %>
 
+<body>
 <h1>My First Heading</h1>
 
 <p>My first paragraph.</p>
-
 </body>
-</html>
+<%@include file="templates/footer.jsp" %>
