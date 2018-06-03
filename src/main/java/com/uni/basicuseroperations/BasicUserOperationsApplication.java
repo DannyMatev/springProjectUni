@@ -7,12 +7,6 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 @SpringBootApplication
 public class BasicUserOperationsApplication extends SpringBootServletInitializer {
-
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(BasicUserOperationsApplication.class);
-	}
-
 	public static void main(String[] args) {
 		SpringApplication.run(BasicUserOperationsApplication.class, args);
 	}
