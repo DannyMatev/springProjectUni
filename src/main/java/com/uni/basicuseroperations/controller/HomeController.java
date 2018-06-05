@@ -20,4 +20,17 @@ public class HomeController {
 
         return modelAndView;
     }
+
+
+    @RequestMapping("/registration")
+    public ModelAndView registration() {
+        ModelAndView modelAndView = new ModelAndView("registration");
+        return modelAndView;
+    }
+
+    @RequestMapping("/login")
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView("login");
+        return modelAndView;
+    }
 }

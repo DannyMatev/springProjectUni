@@ -1,3 +1,151 @@
-h1 {
-    color:red;
+* {
+
+    margin: 0 auto;
+    padding: 0;
 }
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+
+}
+
+body {
+
+    margin: 0;
+    background: #f9ffff;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: -moz-linear-gradient(top, #f9ffff 0%, #f9ffff 81%);
+    background: -webkit-linear-gradient(top, #f9ffff 0%, #f9ffff 81%);
+    background: linear-gradient(to bottom, #f9ffff 0%, #f9ffff 81%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9ffff', endColorstr='#f9ffff', GradientType=0);
+}
+
+html {
+}
+
+.input-group {
+
+    padding-top: 64px;
+    box-sizing: border-box;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    padding-bottom: 4px;
+}
+
+.form-container {
+
+    border-radius: 20px;
+    background-color: #d0d8d8;
+    width: 100%;
+    max-width: 494px;
+    margin: 0 auto;
+}
+
+.form-container label {
+    font-family: 'Lato', sans-serif;
+}
+
+.input-group:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.form-container form {
+
+    padding: 50px;
+    margin-top: 50px;
+}
+
+.input-group input {
+    border-radius: 13px;
+    padding: 4px;
+    width: 366px;
+    box-sizing: border-box;
+}
+
+.input-group select {
+    padding: 4px;
+    float: left;
+    width: 30%;
+}
+
+.input-group .gender-choice {
+    padding-top: 10px;
+    display: inline-block;
+    padding-left: 30px;
+}
+
+.input-group .gender-choice label {
+    display: inline;
+}
+
+.input-group .gender-choice input[type=radio] {
+    width: auto;
+}
+
+.form-container input[type=submit] {
+    width: 100px;
+    float: left;
+    display: block;
+    height: 50px;
+    font-size: 16pt;
+    font-family: 'Lato', sans-serif;
+    margin-top: 16px;
+}
+
+.form-container button {
+    border-radius: 7px;
+    width: 100px;
+    float: right;
+    display: block;
+    height: 50px;
+    font-size: 16pt;
+    font-family: 'Lato', sans-serif;
+    margin: 10px;
+}
+
+.error {
+    margin-left: 10px;
+    color: red;
+    display: none;
+}
+
+.button {
+    text-align: center;
+    height: 40px;
+    border: 1px solid grey;
+    border-radius: 3px;
+    width: 90px;
+    margin-bottom: 6px;
+}
+
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.footer-copyright {
+    position: absolute;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+}
+
+.paragraph {
+    text-align: center;
+    color: white;
+}
+
+.navbar-brand {
+    text-align: center;
+}
+
