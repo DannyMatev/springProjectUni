@@ -1,6 +1,5 @@
 package com.uni.basicuseroperations.controller;
 
-import com.uni.basicuseroperations.model.UserModel;
 import com.uni.basicuseroperations.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -19,9 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping
 public class HomeController {
 
-    @Autowired
-    private UserRepository userRepository;
-
     @GetMapping("/home")
     public ModelAndView home() {
         ModelAndView modelAndView = new ModelAndView("home");
@@ -29,24 +25,30 @@ public class HomeController {
         return modelAndView;
     }
 
-    @GetMapping("/login")
-    public ModelAndView login() {
-        ModelAndView modelAndView = new ModelAndView("login");
+    @PostMapping("/logout")
+    public ModelAndView logout(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("redirect:login");
+        request.getSession().setAttribute("user", null);
+        request.getSession().invalidate();
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return modelAndView;
+    }
 
-        if (!(authentication instanceof AnonymousAuthenticationToken)) {
-            modelAndView.setViewName("redirect:/home");
+    @RequestMapping("/registration")
+    public ModelAndView registration() {
+        ModelAndView modelAndView = new ModelAndView("registration");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            return new ModelAndView("forward:/index");
         }
 
         return modelAndView;
     }
 
-    @GetMapping("/logout")
-    public ModelAndView logout(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("redirect:login");
-        request.getSession().setAttribute("user", null);
-        request.getSession().invalidate();
+    @RequestMapping("/login")
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView("login");
 
         return modelAndView;
     }

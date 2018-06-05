@@ -83,9 +83,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 .logout()
-                .permitAll()
-                .and()
-                .headers().cacheControl().disable();
+                .permitAll();
     }
 
 }
