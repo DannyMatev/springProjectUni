@@ -31,10 +31,6 @@
 
 
 </article>
-<form name="regForm" method="post" action="/logout">
-    <div class="input-group">
-        <button class="btn btn-primary" type="submit" value="Log out">Log out</button>
 
-    </div>
-</form>
+    <a class="btn btn-primary" href="/logout">Log out</a>
 <%@include file="templates/footer.jsp" %>

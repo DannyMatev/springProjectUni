@@ -84,11 +84,10 @@ body {
     margin-top: 16px;
 }
 
-.form-container button {
+.form-container .custom-btn {
     border-radius: 7px;
     width: 100px;
-    float: right;
-    display: block;
+    display: inline-block;
     height: 50px;
     font-size: 16pt;
     font-family: 'Lato', sans-serif;
@@ -98,7 +97,6 @@ body {
 .error {
     margin-left: 10px;
     color: red;
-    display: none;
 }
 
 .button {
