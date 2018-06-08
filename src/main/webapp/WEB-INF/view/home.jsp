@@ -1,6 +1,5 @@
 <%@include file="templates/header.jsp" %>
 
-
 <h2>SIMPLE HOME PAGE</h2>
 <article>
     <h3>Blog post name here</h3>

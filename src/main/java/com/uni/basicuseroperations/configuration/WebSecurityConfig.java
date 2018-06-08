@@ -1,5 +1,6 @@
 package com.uni.basicuseroperations.configuration;
 
+import com.uni.basicuseroperations.security.CustomAuthenticationFailureHandler;
 import com.uni.basicuseroperations.security.CustomAuthenticationFilter;
 import com.uni.basicuseroperations.security.CustomSuccessHandler;
 import com.uni.basicuseroperations.security.CustomUserDetailsService;
@@ -26,11 +27,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private CustomSuccessHandler customSuccessHandler;
 
+    private CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
+
     @Autowired
     public WebSecurityConfig(CustomUserDetailsService customUserDetailsService,
-                             CustomSuccessHandler customSuccessHandler) {
+                             CustomSuccessHandler customSuccessHandler,
+                             CustomAuthenticationFailureHandler customAuthenticationFailureHandler) {
         this.customSuccessHandler = customSuccessHandler;
         this.customUserDetailsService = customUserDetailsService;
+        this.customAuthenticationFailureHandler = customAuthenticationFailureHandler;
     }
 
     @Bean
@@ -38,6 +43,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter();
         customAuthenticationFilter.setAuthenticationManager(authenticationManagerBean());
         customAuthenticationFilter.setAuthenticationSuccessHandler(customSuccessHandler);
+        customAuthenticationFilter.setAuthenticationFailureHandler(customAuthenticationFailureHandler);
+
         return customAuthenticationFilter;
     }
 
@@ -74,6 +81,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/register").permitAll()
+                .antMatchers("/access_denied").permitAll()
                 .antMatchers("/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()

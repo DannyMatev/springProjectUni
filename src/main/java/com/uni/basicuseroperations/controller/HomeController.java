@@ -66,15 +66,16 @@ public class HomeController {
                                      @RequestParam(value = "password") String password,
                                      @RequestParam(value = "gender") String gender,
                                      RedirectAttributes redirectAttrs) {
-        RedirectView redirectView = new RedirectView("/register");
+        RedirectView redirectView = new RedirectView("/login");
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(auth instanceof AnonymousAuthenticationToken)) {
-            return new RedirectView("forward:/home");
+            return new RedirectView("/home");
         }
 
         if(!userService.registerUser(email, password, gender)) {
             redirectAttrs.addFlashAttribute("user_exists_error", "User with that email already exists");
+            return new RedirectView("/register");
         }
 
         return redirectView;
@@ -86,7 +87,19 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         if (!(auth instanceof AnonymousAuthenticationToken)) {
-            return new ModelAndView("forward:/home");
+            return new ModelAndView("/home");
+        }
+
+        return modelAndView;
+    }
+
+    @RequestMapping("/access_denied")
+    public ModelAndView accessDenied() {
+        ModelAndView modelAndView = new ModelAndView("access_denied");
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+        if (!(auth instanceof AnonymousAuthenticationToken)) {
+            return new ModelAndView("/home");
         }
 
         return modelAndView;
